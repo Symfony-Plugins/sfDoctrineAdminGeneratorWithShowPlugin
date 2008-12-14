@@ -1,0 +1,58 @@
+Generate a module with propel:generate-admin  : 
+{{{
+  ./symfony --theme=adminWithShow doctrine:generate-admin 
+}}}
+
+turn on or off the show view in the generator.yml  
+{{{
+    with_show:             true
+}}}
+    
+
+sample :
+{{{
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           DemoAuthor
+    theme:                 adminWithShow
+    non_verbose_templates: true
+    with_show:             true
+    singular:              ~
+    plural:                ~
+    route_prefix:          demo_author
+    with_doctrine_route:   1
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~
+      show:    ~
+}}}
+
+you can customize the display :
+{{{
+      show:
+        title:      my show view
+        display:    [firstname, is_admin ]
+        fields:
+          is_admin: {name: user is admin }
+}}}
+
+or:
+{{{
+      show 
+        title:      my show view
+        hide:       [id ]
+        fields:
+          is_admin: {name: user is admin }
+}}}
+
+
+== TODO ==
+ * a task for create the module
+ 
