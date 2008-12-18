@@ -24,20 +24,6 @@
       $this->configuration['show']['fields'][$field]   = new sfModelGeneratorConfigurationField($field, array_merge(array('label' => sfInflector::humanize(sfInflector::underscore($field))), $config['default'][$field], $config['show'][$field]));
     }
     
-    // list field configuration
-    $this->configuration['show']['display'] = array();
-    foreach ($this->getShowDisplay() as $name)
-    {
-      list($name, $flag) = sfModelGeneratorConfigurationField::splitFieldWithFlag($name);
-      if (!isset($this->configuration['show']['fields'][$name]))
-      {
-        throw new InvalidArgumentException(sprintf('The field "%s" does not exist.', $name));
-      }
-      $field = $this->configuration['show']['fields'][$name];
-      $field->setFlag($flag);
-      $this->configuration['show']['display'][$name] = $field;
-    }
-    
     // show actions
     foreach (array('show') as $context)
     {
