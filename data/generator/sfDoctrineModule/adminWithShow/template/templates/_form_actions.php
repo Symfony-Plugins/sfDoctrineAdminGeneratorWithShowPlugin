@@ -18,7 +18,7 @@
 <?php elseif ('_save_and_add' == $name): ?>
   <?php echo $this->addCredentialCondition('[?php echo $helper->linkToSaveAndAdd($form->getObject(), '.$this->asPhp($params).') ?]', $params) ?>
 
-<?php elseif ('_show' == $name ): ?>
+<?php elseif ('_show' == $name): ?>
   <?php echo $this->addCredentialCondition('[?php echo $helper->linkToShow($form->getObject(), '.$this->asPhp($params).') ?]', $params) ?>
 
 <?php else: ?>

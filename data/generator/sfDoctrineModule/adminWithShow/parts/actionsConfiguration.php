@@ -16,12 +16,7 @@
 
   public function getFormActions()
   {
-    <?php if(isset($this->params) && $this->params['with_show'] == true): ?>
-      return <?php echo $this->asPhp(isset($this->config['form']['actions']) ? $this->config['form']['actions'] : array('_delete' => null, '_list' => null, '_show' => null, '_save' => null, '_save_and_add' => null) ) ?>;
-    <?php else: ?>
       return <?php echo $this->asPhp(isset($this->config['form']['actions']) ? $this->config['form']['actions'] : array('_delete' => null, '_list' => null, '_save' => null, '_save_and_add' => null) ) ?>;
-    <?php endif; ?>
-    
 <?php unset($this->config['form']['actions']) ?>
   }
   
@@ -33,17 +28,21 @@
 
   public function getEditActions()
   {
+<?php if(isset($this->params) && $this->params['with_show'] == true): ?>
+    return <?php echo $this->asPhp(isset($this->config['edit']['actions']) ? $this->config['edit']['actions'] : array('_delete' => null, '_list' => null, '_show' => null, '_save' => null, '_save_and_add' => null)) ?>;
+<?php else: ?>
     return <?php echo $this->asPhp(isset($this->config['edit']['actions']) ? $this->config['edit']['actions'] : array()) ?>;
+<?php endif; ?>
 <?php unset($this->config['edit']['actions']) ?>
   }
 
   public function getListObjectActions()
   {
-    <?php if(isset($this->params) && $this->params['with_show'] == true): ?>
-      return <?php echo $this->asPhp(isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions'] : array( '_show' => null, '_edit' => null, '_delete' => null)) ?>;
-    <?php else: ?>
-      return <?php echo $this->asPhp(isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions'] : array('_edit' => null, '_delete' => null)) ?>;
-    <?php endif; ?>
+<?php if(isset($this->params) && $this->params['with_show'] == true): ?>
+    return <?php echo $this->asPhp(isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions'] : array( '_show' => null, '_edit' => null, '_delete' => null)) ?>;
+<?php else: ?>
+    return <?php echo $this->asPhp(isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions'] : array('_edit' => null, '_delete' => null)) ?>;
+<?php endif; ?>
 <?php unset($this->config['list']['object_actions']) ?>
   }
   

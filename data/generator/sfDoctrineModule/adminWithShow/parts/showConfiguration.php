@@ -18,12 +18,6 @@
                                           'display'        => $this->getShowDisplay(),
                                         ) ;
 
-    foreach (array_keys($config['default']) as $field)
-    {
-      $formConfig = array_merge($config['default'][$field], $config['form'][$field]);
-      $this->configuration['show']['fields'][$field]   = new sfModelGeneratorConfigurationField($field, array_merge(array('label' => sfInflector::humanize(sfInflector::underscore($field))), $config['default'][$field], $config['show'][$field]));
-    }
-    
     // show actions
     foreach (array('show') as $context)
     {
