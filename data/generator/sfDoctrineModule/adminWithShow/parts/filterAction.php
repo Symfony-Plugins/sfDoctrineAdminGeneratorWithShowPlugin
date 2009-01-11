@@ -2,7 +2,7 @@
   {
     if ($request->hasParameter('_reset'))
     {
-      $this->setFilters(array());
+      $this->setFilters($this->configuration->getFilterDefaults()); 
 
       $this->redirect('@<?php echo $this->getUrlForAction('list') ?>');
     }
@@ -17,6 +17,7 @@
       $this->redirect('@<?php echo $this->getUrlForAction('list') ?>');
     }
 
+    $this->setPage(1);
     $this->pager = $this->getPager();
     $this->sort = $this->getSort();
 
