@@ -18,6 +18,10 @@ generator:
     theme:                 adminWithShow
     non_verbose_templates: true
     with_show:             true
+    with_csv:              true
+    with_xml:              true
+    with_pdf:              true
+    with_excel:            true
     singular:              ~
     plural:                ~
     route_prefix:          demo_author
@@ -32,6 +36,17 @@ generator:
       edit:    ~
       new:     ~
       show:    ~
+      csv:     
+        display: [Category, title, extract]
+        filename: monfichier
+        delimeter: "'"
+        separator: ','
+      xml:
+        filename: my_xml_file
+      excel:
+        filename: my_excel_file
+      pdf:
+        filename: my_pdf_file   
 }}}
 
 you can customize the display :
@@ -55,4 +70,7 @@ or:
 
 == TODO ==
  * a task for create the module
+ * preview before save
+ * import csv, xml and perhaps excel file
+ * make more easy to change css in the admin generator.
  
