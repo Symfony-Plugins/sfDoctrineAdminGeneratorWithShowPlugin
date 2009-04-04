@@ -38,7 +38,7 @@ generator:
       show:    ~
       csv:     
         display: [Category, title, extract]
-        filename: monfichier
+        filename: my_csv_file
         delimeter: "'"
         separator: ','
       xml:
