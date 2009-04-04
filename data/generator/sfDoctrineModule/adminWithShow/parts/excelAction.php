@@ -39,9 +39,20 @@
 
     $activeSheet = 0;
     $line         = 1;$tab = array();
+
+    $col = 0;
+    foreach($this->configuration->getExcelDisplay() as $display)
+    {
+      $method = 'get'.ucfirst($display);
+      $objPHPExcel->getActiveSheet()->SetCellValue($this->int2Char($col).$line, ucfirst($display));
+      //$tab[$this->int2Char($col).$line] =  $object->{ 'get'.ucfirst($display)}(); 
+      $col ++;
+    }
+    $line ++;
+
     foreach($this-><?php echo $this->getPluralName() ?>  as $object)
     {
-      $col = 1;
+      $col = 0;
       foreach($this->configuration->getExcelDisplay() as $display)
       {
         $method = 'get'.ucfirst($display);
@@ -53,18 +64,20 @@
     }
     
     $objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
-    $tmp_file = sfConfig::get('sf_upload_dir').'/'.uniqid();
-    $objWriter->save('php://output');
-    $this->content = file_get_contents($tmp_file);
+    
+    $objWriter->setTempDir(sfConfig::get('app_sf_doctrine_admin_generator_with_show_plugin_tmp_dir', sfConfig::get('sf_data_dir') . DIRECTORY_SEPARATOR . 'tmp' ));
    
     $this->setLayout(false);
-    $this->setTemplate('export');
+    $this->setTemplate(false);
     
     $this->getResponse()->clearHttpHeaders();
-    $this->setLayout(false);
-
     $this->getResponse()->setContentType('application/octet-stream');
     $this->getResponse()->addHttpMeta('content-disposition: ', 'attachment; filename="' . $this->configuration->getExcelFilename() . '.xls', true);
+    $this->getResponse()->sendHttpHeaders();
+
+    $objWriter->save();
+
+    return sfView::NONE;
   }
   
   function int2Char($integer)

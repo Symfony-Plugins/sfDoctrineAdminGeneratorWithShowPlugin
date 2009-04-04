@@ -61,6 +61,15 @@
     $this->getResponse()->clearHttpHeaders();
     $this->getResponse()->setContentType('application/octet-stream');
     $this->getResponse()->addHttpMeta('content-disposition: ', 'attachment; filename="' . $this->configuration->getCsvFilename() . '.csv', true);
+    
+    if($this->getRequest()->getMethod() == sfWebRequest::POST)
+    {
+      $this->getResponse()->setContent($this->content);
+      $this->getResponse()->send();
+      $this->setTemplate(false);
+      return sfView::NONE;
+    }    
+
   }
   
   public function getImport()

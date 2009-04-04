@@ -38,7 +38,7 @@
       $this->xw->startElement('structure');
       foreach($this->configuration->getXmlDisplay() as $display)
       {
-        $this->xw->writeElement($display, utf8_encode($<?php echo $this->getSingularName() ?>->get($display)));
+        $this->xw->writeElement($display, $<?php echo $this->getSingularName() ?>->get($display));
       }
       $this->xw->endElement();    
     }
@@ -46,12 +46,24 @@
     $this->xw->endDtd();
 
     $this->content = $this->xw->outputMemory(true) ;
-    //$this->content = '';
     
     $this->setLayout(false);
     $this->setTemplate('export');
         
     $this->getResponse()->clearHttpHeaders();
-    $this->getResponse()->setContentType('application/octet-stream');
+    $this->getResponse()->setContentType('text/xml');
     $this->getResponse()->addHttpMeta('content-disposition: ', 'attachment; filename=' . $this->configuration->getXmlFilename() . '.xml', true);
+    
+    
+    if($this->getRequest()->getMethod() == sfWebRequest::POST)
+    {
+      $this->getResponse()->setContent($this->content);
+      $this->getResponse()->send();
+      $this->setTemplate(false);
+      // for an obscure raison, sfResponse return a error with sfView::NONE 
+      // so stop with die the script..
+      die;
+      //return sfView::NONE;
+    }       
+       
   }
