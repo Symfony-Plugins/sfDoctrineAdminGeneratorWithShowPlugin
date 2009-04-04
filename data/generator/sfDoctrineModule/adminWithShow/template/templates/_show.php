@@ -18,8 +18,8 @@
       [?php include_component('<?php echo $this->getModuleName() ?>', $name, array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'attributes' => $attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes)) ?]
     [?php else: ?]
     <div class="sf_admin_form_row">
-      <label>[?php echo $field->getConfig('label') ?]:</label>
-	    [?php echo $form->getObject()->get($name) ?]
+      <label>[?php echo $field->getConfig('label')? $field->getConfig('label'): $field->getName() ?]:</label>
+	    [?php echo $form->getObject()->get($name) ? $form->getObject()->get($name) : "&nbsp;" ?]
     </div>
     [?php endif; ?]
     

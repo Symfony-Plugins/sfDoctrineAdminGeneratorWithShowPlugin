@@ -12,6 +12,7 @@ if (!isset($app))
 
 require_once $_SERVER['SYMFONY'].'/autoload/sfCoreAutoload.class.php';
 sfCoreAutoload::register();
+sfConfig::set('sf_environment', 'test');
 
 require_once dirname(__FILE__).'/../fixtures/project/config/ProjectConfiguration.class.php';
 $configuration = ProjectConfiguration::getApplicationConfiguration($app, 'test', isset($debug) ? $debug : true);

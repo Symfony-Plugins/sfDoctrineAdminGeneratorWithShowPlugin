@@ -15,9 +15,12 @@ class sfDoctrineAdminGeneratorWithShowPluginConfiguration extends sfPluginConfig
    */
   public function initialize()
   {
-    if(!in_array('sfDoctrinePlugin',$this->configuration->getPlugins()))
+    if(sfConfig::get('sf_environment') != 'test')
     {
-      throw new sfException('sfDoctrineAdminGeneratorWithShowPlugin require sfDoctrinePlugin.');
+      if(!in_array('sfDoctrinePlugin',$this->configuration->getPlugins()))
+      {
+        throw new sfException('sfDoctrineAdminGeneratorWithShowPlugin require sfDoctrinePlugin.');
+      }
     }
   }
 }

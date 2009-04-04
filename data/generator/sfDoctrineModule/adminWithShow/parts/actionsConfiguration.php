@@ -48,12 +48,26 @@
   
   public function getListActions()
   {
-    return <?php echo $this->asPhp(isset($this->config['list']['actions']) ? $this->config['list']['actions'] : array('_new' => null)) ?>;
+<?php $actions = array('_new' => null); ?>
+<?php if(isset($this->params)): ?>
+  <?php if(isset($this->params['with_csv'])   && $this->params['with_csv']   == true) $actions= array_merge($actions, array('_csv'    => array('action' => 'csv'))); ?>
+  <?php if(isset($this->params['with_excel']) && $this->params['with_excel'] == true) $actions= array_merge($actions, array('_excel'  => array('action' => 'excel'))); ?>
+  <?php if(isset($this->params['with_pdf'])   && $this->params['with_pdf']   == true) $actions= array_merge($actions, array('_pdf'    => array('action' => 'pdf'))); ?>
+  <?php if(isset($this->params['with_xml'])   && $this->params['with_xml']   == true) $actions= array_merge($actions, array('_xml'    => array('action' => 'xml'))); ?>
+<?php endif; ?>
+    return <?php echo $this->asPhp(isset($this->config['list']['actions']) ? $this->config['list']['actions'] :$actions ) ?>;
 <?php unset($this->config['list']['actions']) ?>
   }
 
   public function getListBatchActions()
   {
-    return <?php echo $this->asPhp(isset($this->config['list']['batch_actions']) ? $this->config['list']['batch_actions'] : array('_delete' => null)) ?>;
+<?php $batchActions = array('_delete' => null); ?>
+<?php if(isset($this->params)): ?>
+  <?php if(isset($this->params['with_csv'])   && $this->params['with_csv']   == true) $batchActions= array_merge($batchActions, array('_csv'    => array('action' => 'csv'))); ?>
+  <?php if(isset($this->params['with_excel']) && $this->params['with_excel'] == true) $batchActions= array_merge($batchActions, array('_excel'  => array('action' => 'excel'))); ?>
+  <?php if(isset($this->params['with_pdf'])   && $this->params['with_pdf']   == true) $batchActions= array_merge($batchActions, array('_pdf'    => array('action' => 'pdf'))); ?>
+  <?php if(isset($this->params['with_xml'])   && $this->params['with_xml']   == true) $batchActions= array_merge($batchActions, array('_xml'    => array('action' => 'xml'))); ?>
+<?php endif; ?>
+    return <?php echo $this->asPhp(isset($this->config['list']['batch_actions']) ? $this->config['list']['batch_actions'] : $batchActions) ?>;
 <?php unset($this->config['list']['batch_actions']) ?>
   }

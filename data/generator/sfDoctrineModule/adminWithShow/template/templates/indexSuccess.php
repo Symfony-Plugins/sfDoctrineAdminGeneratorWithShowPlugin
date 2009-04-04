@@ -13,6 +13,7 @@
 <?php if ($this->configuration->hasFilterForm()): ?>
   <div id="sf_admin_bar">
     [?php include_partial('<?php echo $this->getModuleName() ?>/filters', array('form' => $filters, 'configuration' => $configuration)) ?]
+    [?php include_partial('<?php echo $this->getModuleName() ?>/import', array('form' => $import, 'configuration' => $configuration)) ?]
   </div>
 <?php endif; ?>
 

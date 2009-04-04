@@ -52,8 +52,25 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfiguration ex
     return '<?php echo isset($this->config['filter']['class']) && !in_array($this->config['filter']['class'], array(null, true, false), true) ? $this->config['filter']['class'] : $this->getModelClass().'FormFilter' ?>';
 <?php unset($this->config['filter']['class']) ?>
   }
-
+<?php if(isset($this->params['with_show']) && $this->params['with_show'] == true): ?>
 <?php include dirname(__FILE__).'/showConfiguration.php' ?>
+<?php endif; ?>
+
+<?php if(isset($this->params['with_csv']) && $this->params['with_csv'] == true): ?>
+<?php include dirname(__FILE__).'/csvConfiguration.php' ?>
+<?php endif; ?>
+
+<?php if(isset($this->params['with_excel']) && $this->params['with_excel'] == true): ?>
+<?php include dirname(__FILE__).'/excelConfiguration.php' ?>
+<?php endif; ?>
+
+<?php if(isset($this->params['with_pdf']) && $this->params['with_pdf'] == true): ?>
+<?php include dirname(__FILE__).'/pdfConfiguration.php' ?>
+<?php endif; ?>
+
+<?php if(isset($this->params['with_xml']) && $this->params['with_xml'] == true): ?>
+<?php include dirname(__FILE__).'/xmlConfiguration.php' ?>
+<?php endif; ?>
 
 <?php include dirname(__FILE__).'/filtersConfiguration.php' ?>
 

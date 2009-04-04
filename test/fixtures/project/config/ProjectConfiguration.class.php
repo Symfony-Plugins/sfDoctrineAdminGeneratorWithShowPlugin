@@ -12,7 +12,8 @@ class ProjectConfiguration extends sfProjectConfiguration
 {
   public function setup()
   {
-    $this->setPlugins(array('sfDoctrineAdminGeneratorWithShowPlugin'));
+    $this->setPlugins(array('sfDoctrineAdminGeneratorWithShowPlugin','sfDoctrinePlugin'));
     $this->setPluginPath('sfDoctrineAdminGeneratorWithShowPlugin', dirname(__FILE__).'/../../../..');
+    
   }
 }
