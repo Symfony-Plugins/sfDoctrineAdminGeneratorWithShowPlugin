@@ -1,0 +1,30 @@
+blog_post:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               BlogPost
+    module:              blogPost1
+    prefix_path:         blogPost1
+    column:              id
+    with_wildcard_routes: true
+
+blog_post2:
+  class: sfDoctrineRouteCollection
+  options:
+    model:               BlogPost
+    module:              blogPost2
+    prefix_path:         blogPost2
+    column:              id
+    with_wildcard_routes: true
+
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

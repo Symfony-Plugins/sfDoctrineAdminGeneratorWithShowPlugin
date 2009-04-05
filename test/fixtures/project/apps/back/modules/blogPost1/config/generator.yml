@@ -1,0 +1,36 @@
+#
+# this file show a base configuration of the admin show
+#  with no show/export/import
+#
+#
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           BlogPost
+    theme:                 adminWithShow
+    non_verbose_templates: true
+    singular:              ~
+    plural:                ~
+    route_prefix:          blog_post
+    with_doctrine_route:     1
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~
+#      show:    ~
+#      csv:     
+#        display: [Category, title, extract]
+#        filename: monfichier
+#        delimeter: "'"
+#        separator: ','
+#      xml:
+#        filename: fichierxml
+#      excel:
+#        filename: fichierexcel
+#      pdf:
+#        filename: fichierpdf

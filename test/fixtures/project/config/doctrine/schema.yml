@@ -1,0 +1,80 @@
+BlogPost:
+  actAs:
+    Versionable:
+    Timestampable:
+    Sluggable:
+      fields:       [title]
+      name:         slug
+      type:         string
+      length:       255
+  columns:
+    author_id:                 {type: integer(4)}
+    category_id:               {type: integer(4)}
+    title:                     {type: string(255)}
+    extract:                   {type: string(6000)}
+    content:                   {type: string(6000)}
+    is_published:              {type: boolean(1), default: false}
+    allow_comments:            {type: boolean(1), default: true}
+    title:                     {type: string(255)}
+  relations:
+    Category:
+      class:                   BlogCategory
+      local:                   category_id
+      onDelete:                CASCADE
+    Tags:
+      class:                   BlogTag
+      refClass:                BlogPostTag
+      foreignAlias:            BlogPost
+      
+BlogCategory:
+  actAs:
+    Timestampable:
+    Sluggable:
+      fields:                  [name]
+      name:                    slug
+      type:                    string
+      length:                  255
+  columns:
+    id:                        {type: integer(4), primary: true, autoincrement: true}
+    name:                      {type: string(255)}
+    icon:                      {type: string(255)}
+
+BlogComment:
+  actAs:
+    Timestampable:
+  columns:
+    post_id:                   {type: integer(20)}
+    author:                    {type: string(255)}
+    email:                     {type: string(255)}
+    site:                      {type: string(255)}
+    content:                   {type: string(6000)}
+    ipv4:                      {type: string(16), default: null}
+    ipv6:                      {type: string(64), default: null}
+    spam:                      {type: boolean, default: false}
+  relations:
+    Post:
+      class:                   BlogPost
+      local:                   post_id
+      onDelete:                CASCADE
+
+ 
+BlogPostTag:
+  columns:
+    blog_post_id:
+      type: integer
+      primary: true
+    blog_tag_id:
+      type: integer
+      primary: true
+ 
+BlogTag:
+  actAs:
+    Timestampable:
+    Sluggable:
+      fields:                 [name]
+      name:                   slug
+      type:                   string
+      length:                 255
+    Timestampable:
+  columns:
+    name:                     string(255)

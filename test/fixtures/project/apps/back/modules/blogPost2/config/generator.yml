@@ -1,0 +1,44 @@
+#
+# this file show a base configuration of the admin show
+#
+# with a show view
+#
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           BlogPost
+    theme:                 adminWithShow
+    non_verbose_templates: true
+    with_csv:              true
+    with_excel:            true
+    with_pdf:              true
+    with_show:             true
+    with_xml:              true
+    singular:              ~
+    plural:                ~
+    route_prefix:          blog_post2
+    with_doctrine_route:     1
+
+    config:
+      actions: ~
+      fields:  
+        title: {label: Title}
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~
+      csv:     ~
+      excel:   ~
+      pdf:     ~
+      show:    ~
+      xml:     ~
+#        display: [author_id, category_id, title, extract, content, is_published, allow_comments, version, created_at, updated_at, _ajout1, ~ajout2]
+#        fields:
+#          category_id: {label: Category} 
+#        actions: 
+#          test: {label: yeah}
+#      csv:     ~
+#      pdf:     ~
+#      excel:   ~
+#      xml:     ~        
