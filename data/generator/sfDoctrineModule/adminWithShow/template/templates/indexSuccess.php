@@ -13,7 +13,9 @@
 <?php if ($this->configuration->hasFilterForm()): ?>
   <div id="sf_admin_bar">
     [?php include_partial('<?php echo $this->getModuleName() ?>/filters', array('form' => $filters, 'configuration' => $configuration)) ?]
+<?php if(isset($this->params['with_import']) && $this->params['with_import'] == true ): ?>
     [?php include_partial('<?php echo $this->getModuleName() ?>/import', array('form' => $import, 'configuration' => $configuration)) ?]
+<?php endif; ?>    
   </div>
 <?php endif; ?>
 

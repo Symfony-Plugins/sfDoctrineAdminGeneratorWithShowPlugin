@@ -14,5 +14,7 @@
 
     $this->pager = $this->getPager();
     $this->sort = $this->getSort();
+    <?php if(isset($this->params['with_import']) && $this->params['with_import'] == true ): ?>
     $this->import = $this->getImport();
+    <?php endif; ?>
   }

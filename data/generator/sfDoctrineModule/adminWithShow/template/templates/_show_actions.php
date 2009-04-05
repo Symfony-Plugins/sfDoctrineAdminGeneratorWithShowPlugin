@@ -1,3 +1,4 @@
+<?php if(isset($this->params['with_csv']) && $this->params['with_csv'] == true): ?>
 <ul class="sf_admin_actions">
 <?php foreach ($this->configuration->getValue('show.actions') as $name => $params): ?>
 <?php if ('_edit' == $name): ?>
@@ -19,3 +20,4 @@
 <?php endif; ?>
 <?php endforeach; ?>
 </ul>
+<?php endif; ?>
