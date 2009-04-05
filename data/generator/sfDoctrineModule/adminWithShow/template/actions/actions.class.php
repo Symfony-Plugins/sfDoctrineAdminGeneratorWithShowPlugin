@@ -33,7 +33,7 @@ class <?php echo $this->getGeneratedModuleName() ?>Actions extends sfActions
 <?php include dirname(__FILE__).'/../../parts/filterAction.php' ?>
 <?php endif; ?>
 
-<?php if(isset($this->params) && $this->params['with_show'] == true ): ?>
+<?php if (isset($this->params['with_show']) && $this->params['with_show'] == true ): ?>
 <?php include dirname(__FILE__).'/../../parts/showAction.php' ?>
 <?php endif; ?>
 
@@ -61,16 +61,16 @@ class <?php echo $this->getGeneratedModuleName() ?>Actions extends sfActions
 
 <?php include dirname(__FILE__).'/../../parts/sortingAction.php' ?>
 
-<?php if(isset($this->params['with_csv']) && $this->params['with_csv'] == true): ?>
+<?php if (isset($this->params['with_csv']) && $this->params['with_csv'] == true): ?>
 <?php include dirname(__FILE__).'/../../parts/csvAction.php' ?>
 <?php endif; ?>
-<?php if(isset($this->params['with_excel']) && $this->params['with_excel'] == true): ?>
+<?php if (isset($this->params['with_excel']) && $this->params['with_excel'] == true): ?>
 <?php include dirname(__FILE__).'/../../parts/excelAction.php' ?>
 <?php endif; ?>
-<?php if(isset($this->params['with_pdf']) && $this->params['with_pdf'] == true): ?>
+<?php if (isset($this->params['with_pdf']) && $this->params['with_pdf'] == true): ?>
 <?php include dirname(__FILE__).'/../../parts/pdfAction.php' ?>
 <?php endif; ?>
-<?php if(isset($this->params['with_xml']) && $this->params['with_xml'] == true): ?>
+<?php if (isset($this->params['with_xml']) && $this->params['with_xml'] == true): ?>
 <?php include dirname(__FILE__).'/../../parts/xmlAction.php' ?>
 <?php endif; ?>
 

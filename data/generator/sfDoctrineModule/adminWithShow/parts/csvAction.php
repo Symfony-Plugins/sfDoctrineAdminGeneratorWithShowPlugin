@@ -60,7 +60,7 @@
 
     $this->getResponse()->clearHttpHeaders();
     $this->getResponse()->setContentType('application/octet-stream');
-    $this->getResponse()->addHttpMeta('content-disposition: ', 'attachment; filename="' . $this->configuration->getCsvFilename() . '.csv', true);
+    $this->getResponse()->addHttpMeta('content-disposition', 'attachment; filename="' . $this->configuration->getCsvFilename() . '.csv', true);
     
     if($this->getRequest()->getMethod() == sfWebRequest::POST)
     {

@@ -19,7 +19,7 @@ class sfDoctrineAdminGeneratorWithShowPluginConfiguration extends sfPluginConfig
     {
       if(!in_array('sfDoctrinePlugin',$this->configuration->getPlugins()))
       {
-        throw new sfException('sfDoctrineAdminGeneratorWithShowPlugin require sfDoctrinePlugin.');
+        //throw new sfException('sfDoctrineAdminGeneratorWithShowPlugin require sfDoctrinePlugin.');
       }
     }
   }

@@ -263,9 +263,10 @@
     // ---------------------------------------------------------
 
     $this->setLayout(false);
-    $this->setTemplate('export');
+    $this->setTemplate(false);
     $this->content = '' ;
     
     //Close and output PDF document
     $pdf->Output($this->configuration->getPdfFilename().".pdf", "I", "I");
+    die;
   }

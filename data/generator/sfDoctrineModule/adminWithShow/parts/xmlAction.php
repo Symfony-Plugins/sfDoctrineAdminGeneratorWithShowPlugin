@@ -51,8 +51,8 @@
     $this->setTemplate('export');
         
     $this->getResponse()->clearHttpHeaders();
-    $this->getResponse()->setContentType('text/xml');
-    $this->getResponse()->addHttpMeta('content-disposition: ', 'attachment; filename=' . $this->configuration->getXmlFilename() . '.xml', true);
+    $this->getResponse()->setContentType('text/xml; charset=utf-8');
+    $this->getResponse()->addHttpMeta('content-disposition', 'attachment; filename=' . $this->configuration->getXmlFilename() . '.xml', true);
     
     
     if($this->getRequest()->getMethod() == sfWebRequest::POST)

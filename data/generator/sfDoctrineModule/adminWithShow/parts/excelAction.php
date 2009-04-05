@@ -72,11 +72,11 @@
     
     $this->getResponse()->clearHttpHeaders();
     $this->getResponse()->setContentType('application/octet-stream');
-    $this->getResponse()->addHttpMeta('content-disposition: ', 'attachment; filename="' . $this->configuration->getExcelFilename() . '.xls', true);
+    $this->getResponse()->addHttpMeta('content-disposition', 'attachment; filename="' . $this->configuration->getExcelFilename() . '.xls', true);
     $this->getResponse()->sendHttpHeaders();
 
     $objWriter->save();
-
+    die;
     return sfView::NONE;
   }
   
