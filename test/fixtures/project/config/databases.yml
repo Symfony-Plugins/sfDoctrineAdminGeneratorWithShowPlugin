@@ -2,4 +2,12 @@ all:
   doctrine_full:
     class:        sfDoctrineDatabase
     param:
-       dsn: 'sqlite:<?php echo dirname(__FILE__)?>/../data/sqlite.db'
+#      dsn: 'sqlite:<?php echo dirname(__FILE__)?>/../data/sqlite.db'
+      dsn:        mysql:dbname=pluginsDoc1;host=localhost
+      username:   root
+      password:   ""
+      encoding:   utf8
+      persistent: true
+      pooling:    true
+
+       

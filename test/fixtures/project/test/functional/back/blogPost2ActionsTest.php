@@ -2,6 +2,12 @@
 
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
+$tmp_excel = sfConfig::get('sf_data_dir').DIRECTORY_SEPARATOR. 'tmp';
+if (!is_dir($tmp_excel))
+{
+  mkdir ($tmp_excel);
+}
+
 # purge all post!
 
 $browser = new sfTestFunctional(new sfBrowser());
@@ -43,22 +49,11 @@ $browser->
   end()->
   
   get('/blogPost2/index')->
-#  click('Excel')->
-  with('response')->begin()->
-    isStatusCode(200)->
-    isHeader('Content-Type','application/octet-stream')->
-    isHeader('Content-Disposition','attachment; filename="blog_post_list.xls')->
-    contains('!/body/')->
-  end()->
-  
-  
-  get('/blogPost2/index')->
   click('Xml')->
   with('response')->begin()->
     isStatusCode(200)->
     isHeader('Content-Type','text/xml; charset=utf-8')->
     isHeader('Content-Disposition','attachment; filename=blog_post_list.xml')->
-    checkElement('/body/'  , '!/body/')->
   end()->
   
   get('/blogPost2/index')->
@@ -67,8 +62,29 @@ $browser->
     isStatusCode(200)->
     isHeader('Content-Type','application/pdf')->
     isHeader('Content-Disposition','attachment; filename=blog_post_list.pdf')->
-    contains('!/body/')->
-    contains('%PDF')->
+    contains('/%PDF/')->
+  end()->
+  
+## use batch action
+  get('/blogPost2/index')->
+  with('response')->begin()->
+  setField('ids[]',array(1, 2))->
+    setField('sf_admin_batch_action', 'batchCsv')->
+    click('go')->
+    isStatusCode(200)->
+  end()->
+
+  
+  get('/blogPost2/index')->
+  click('Excel')->
+  with('response')->begin()->
+  isStatusCode(200)->
+    isHeader('Content-Type','application/octet-stream')->
+    isHeader('Content-Disposition','attachment; filename="blog_post_list.xls"')->
   end()
+    
+  
+  
+  
   ;
   

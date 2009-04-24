@@ -4,7 +4,7 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 # purge all post!
 Doctrine::getTable('BlogPost')->findAll()->delete();
-
+//Doctrine::loadData(dirname(__FILE__).'/fixtures.yml');
 $browser = new sfTestFunctional(new sfBrowser());
 
 
