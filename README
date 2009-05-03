@@ -1,3 +1,12 @@
+this theme for the admin generator support the following features :
+  - show view
+  - export records in csv file.
+  - export records in pdf file (sfTCPFPlugin is needed for export).
+  - export records in xml file.
+  - export records in excel file (sfPhpExcelPlugin is needed for export).
+
+
+
 Generate a module with propel:generate-admin  : 
 {{{
   ./symfony --theme=adminWithShow doctrine:generate-admin 

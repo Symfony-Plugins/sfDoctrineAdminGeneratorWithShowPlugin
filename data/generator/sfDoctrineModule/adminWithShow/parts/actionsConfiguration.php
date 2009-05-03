@@ -28,7 +28,7 @@
 
   public function getEditActions()
   {
-<?php if(isset($this->params) && $this->params['with_show'] == true): ?>
+<?php if(isset($this->params) && isset($this->params['with_show']) && $this->params['with_show'] == true): ?>
     return <?php echo $this->asPhp(isset($this->config['edit']['actions']) ? $this->config['edit']['actions'] : array('_delete' => null, '_list' => null, '_show' => null, '_save' => null, '_save_and_add' => null)) ?>;
 <?php else: ?>
     return <?php echo $this->asPhp(isset($this->config['edit']['actions']) ? $this->config['edit']['actions'] : array()) ?>;
@@ -38,7 +38,7 @@
 
   public function getListObjectActions()
   {
-<?php if(isset($this->params) && $this->params['with_show'] == true): ?>
+<?php if(isset($this->params) && isset($this->params['with_show']) && $this->params['with_show'] == true): ?>
     return <?php echo $this->asPhp(isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions'] : array( '_show' => null, '_edit' => null, '_delete' => null)) ?>;
 <?php else: ?>
     return <?php echo $this->asPhp(isset($this->config['list']['object_actions']) ? $this->config['list']['object_actions'] : array('_edit' => null, '_delete' => null)) ?>;

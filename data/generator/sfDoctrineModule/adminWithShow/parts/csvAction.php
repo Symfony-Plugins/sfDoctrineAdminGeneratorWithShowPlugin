@@ -66,10 +66,8 @@
     {
       $this->getResponse()->setContent($this->content);
       $this->getResponse()->send();
-      $this->setTemplate(false);
-      return sfView::NONE;
     }    
-
+    return sfView::NONE;
   }
   
   public function getImport()

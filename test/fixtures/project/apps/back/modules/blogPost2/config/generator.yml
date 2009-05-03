@@ -32,7 +32,7 @@ generator:
       excel:   ~
       pdf:     ~
       show:    ~
-      xml:     ~
+#      xml:     ~
 #        display: [author_id, category_id, title, extract, content, is_published, allow_comments, version, created_at, updated_at, _ajout1, ~ajout2]
 #        fields:
 #          category_id: {label: Category} 

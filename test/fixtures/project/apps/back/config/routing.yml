@@ -1,3 +1,12 @@
+blog_author:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                BlogAuthor
+    module:               blog_author
+    prefix_path:          blog_author
+    column:               id
+    with_wildcard_routes: true
+
 blog_post:
   class: sfDoctrineRouteCollection
   options:
