@@ -96,8 +96,8 @@
   
   public function getShowTitle()
   {
-    return '<?php echo isset($this->config['show']['title']) ? $this->config['show']['title'] : 'Show '.sfInflector::humanize($this->getModuleName()) ?>';
-<?php unset($this->config['show']['title']) ?>
+    return '<?php echo $this->escapeString(isset($this->config['show']['title']) ? $this->config['show']['title'] : 'Show '.sfInflector::humanize($this->getModuleName())) ?>';
+ <?php unset($this->config['show']['title']) ?>
   }
 
   public function getShowDisplay()
