@@ -17,12 +17,7 @@ class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfiguration ex
   public function getForm($object = null)
   {
     $class = $this->getFormClass();
-
-    $form = new $class($object, $this->getFormOptions());
-    
-    $this->fixFormFields($form);
-    
-    return $form;
+    return new $class($object, $this->getFormOptions());
   }
 
   /**
